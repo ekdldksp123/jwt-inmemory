@@ -1,8 +1,8 @@
 import React, { useReducer } from 'react';
 import { initialState, reducer } from './libs/store';
 import { login } from './libs/auth';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import Login from './pages/Login';
+import 'normalize.css';
+import Router from './components/router';
 
 const App:React.FC = () => {
 
@@ -29,13 +29,7 @@ const App:React.FC = () => {
     }
   }
 
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<Login/>}/>
-      </Routes>
-    </BrowserRouter>
-  );
+  return <Router user={authenticated} />
 }
 
 export default App;
