@@ -1,8 +1,9 @@
 import styled from "@emotion/styled"
-import React, { useReducer, useState } from "react"
+import React, { useState } from "react"
+import { useNavigate } from "react-router-dom"
 import { Container } from "../components/layout/default"
 import { login } from "../libs/auth"
-import { initialState, reducer } from "../libs/store"
+import { useStore } from "../libs/store"
 
 type LoginForm = {
     id: string,
@@ -11,9 +12,9 @@ type LoginForm = {
 
 const Login: React.FC = () => {
     const initForm: LoginForm = {id:'', password:''}
-    const [state, dispatch] = useReducer(reducer, initialState)
-    const { authenticated } = state
     const [form, setForm] = useState<LoginForm>(initForm)
+    const state = useStore(state => state)
+    let navigate = useNavigate();
 
     const handleOnChange = (e: any) => {
         setForm({...form, [e.target.name]: e.target.value})
@@ -28,19 +29,11 @@ const Login: React.FC = () => {
         let token = login(id, password)
     
         if(token) {
-          alert('로그인 성공!')
-          dispatch({
-            type: 'SET_TOKEN',
-            token: token,
-            result: true
-          })
+            state.setToken({...token})
+            console.log(token)
+            navigate('/hello')
         } else {
-          alert('로그인 실패')
-          dispatch({
-            type: 'SET_TOKEN',
-            token: null,
-            result: false
-          })
+            alert('로그인 실패')
         }
         setForm({...initForm})
       }
