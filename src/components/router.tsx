@@ -2,6 +2,7 @@ import { Routes, Route, Navigate, BrowserRouter } from 'react-router-dom';
 import Hello from '../pages/Hello';
 import Home from '../pages/Home';
 import Login from '../pages/Login';
+import NavBar from './molecules/navbar';
 
 interface Props {
     user: boolean
@@ -21,6 +22,7 @@ const ProtectedRoute = ({user, redirectPath = '/login', component}: RouteProps) 
 const Router: React.FC<Props> = ({user}) => {
     return (
         <BrowserRouter>
+            <NavBar/>
             <Routes>
                 <Route path='/' element={<Home />} />
                 <Route path='/login' element={<Login />} />

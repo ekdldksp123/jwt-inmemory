@@ -8,13 +8,13 @@ const NavBar: React.FC = () => {
         <Nav>
             <div className="nav-wrapper" css={navWrapper}>
                 <Logo>
-                    <Link to='/home'><i className="fa fa-angellist"></i>JWT inmemory</Link>
+                    <Link to='/'><i className="fa fa-angellist"></i>JWT inmemory</Link>
                 </Logo>
 
                 <ul>
-                    <li><Link className='menu' to='/home'>Home</Link></li>
+                    <li><Link className='menu' to='/'>Home</Link></li>
                     <li><Link className='menu' to='/login'>Login</Link></li>
-                    <li><Link className='menu'to='/home'>Hello</Link></li>
+                    <li><Link className='menu'to='/hello'>Hello</Link></li>
                 </ul>
             </div>
         </Nav>
