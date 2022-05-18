@@ -7,9 +7,11 @@ export interface AuthProps {
     setToken: (token: Tokens) => void
     deleteToken: () => void
 }
-export const useStore = create<AuthProps>(set => ({
-    authenticated: false,
-    token: undefined,
-    setToken: (jwt:Tokens) => set(state => ({authenticated: true, token: jwt})),
-    deleteToken: () => set(state => ({authenticated: false, token: undefined}))
-}))
+export const useStore = create<AuthProps>(
+    set => ({
+        authenticated: false,
+        token: undefined,
+        setToken: (jwt:Tokens) => set(state => ({authenticated: true, token: jwt})),
+        deleteToken: () => set(state => ({authenticated: false, token: undefined}))
+    }),
+)

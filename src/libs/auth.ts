@@ -24,8 +24,16 @@ export const login = (id:string, password:string) => {
 }
 
 const setTokensToCookie = (token: Tokens) => {
-    cookies.set('access_token', token.access_token, { sameSite: 'strict' })
-    cookies.set('refresh_token', token.refresh_token, { sameSite: 'strict' })
+    cookies.set('access_token', token.access_token, { 
+        sameSite: 'strict',
+        path: '/',
+        expires: new Date(new Date().getTime() + 5 * 60000) 
+    })
+    cookies.set('refresh_token', token.refresh_token, { 
+        sameSite: 'strict',
+        path: '/',
+        expires: new Date(new Date().getTime() + 5 * 60000) 
+    })
 }
 
 export const deleteAccessTokenFromCookie = () => {
